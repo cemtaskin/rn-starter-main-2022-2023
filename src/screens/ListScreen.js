@@ -3,6 +3,7 @@ import {View,Text,StyleSheet,FlatList} from 'react-native';
  
 
 const ListScreen  = () => {
+    
     const friends = [
         {name : 'Friend #1'},
         {name : 'Friend #2'},
@@ -14,15 +15,20 @@ const ListScreen  = () => {
     ];
 
     return <FlatList  
+        keyExtractor={friend => friend.name}
+        horizontal
+        showsHorizontalScrollIndicator
         data={friends}
         renderItem={({item,index})=>{
-            return <Text>{index} - {item.name}</Text>;
+            return <Text style={styles.textStyle}>{index} - {item.name}</Text>;
         }}
     />
 };
 
 const styles = StyleSheet.create({
-
+    textStyle : {
+        marginVertical : 50
+    }
 });
 
 export default ListScreen;
